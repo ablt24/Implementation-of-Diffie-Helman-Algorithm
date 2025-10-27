@@ -1,0 +1,30 @@
+#Publicly known prime number (p) and primitive root (g)
+p = int(input("Enter a prime number (p): "))
+g = int(input("Enter a primitive root of p (g): "))
+
+print("\nPublicly shared values:")
+print("Prime number (p):", p)
+print("Primitive root (g):", g)
+
+#Alice chooses a private key (a)
+a = int(input("\nEnter Alice's private key (a): "))
+A = pow(g, a, p)  # Compute Alice's public key
+print("Alice's Public Key (A):", A)
+
+#Bob chooses a private key (b)
+b = int(input("\nEnter Bob's private key (b): "))
+B = pow(g, b, p)  # Compute Bob's public key
+print("Bob's Public Key (B):", B)
+
+#Exchange public keys and compute shared secret
+secret_key_Alice = pow(B, a, p)
+secret_key_Bob = pow(A, b, p)
+
+print("\nShared Secret Computed by Alice:", secret_key_Alice)
+print("Shared Secret Computed by Bob:", secret_key_Bob)
+
+#Verify shared key
+if secret_key_Alice == secret_key_Bob:
+    print("\n Key Exchange Successful! Shared secret key =", secret_key_Alice)
+else:
+    print("\n Key Exchange Failed!")
