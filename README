@@ -1,0 +1,36 @@
+# Diffie–Hellman Key Exchange
+
+## Objective
+To implement the **Diffie–Hellman Key Exchange Algorithm** in Python, which allows two users to securely exchange a shared secret key over an insecure communication channel.
+
+---
+
+## Theory
+
+The **Diffie–Hellman algorithm** is a key exchange protocol that enables two parties to establish a shared secret key used for encryption and decryption, without directly transmitting the key.
+
+It is based on the **difficulty of computing discrete logarithms** in modular arithmetic.
+
+### Steps:
+1. Publicly known prime number `p` and primitive root `g` are shared between Alice and Bob.
+2. Alice chooses a private key `a` and computes her public key `A = g^a mod p`.
+3. Bob chooses a private key `b` and computes his public key `B = g^b mod p`.
+4. Both exchange their public keys.
+5. Alice computes shared key `K1 = B^a mod p`.
+6. Bob computes shared key `K2 = A^b mod p`.
+7. Since `K1 = K2`, a common secret key is established.
+
+---
+
+## Algorithm
+1. Input prime number `p` and primitive root `g`.
+2. Input private keys of Alice (`a`) and Bob (`b`).
+3. Compute public keys:
+   - `A = (g^a) mod p`
+   - `B = (g^b) mod p`
+4. Compute shared secret keys:
+   - Alice: `Ka = (B^a) mod p`
+   - Bob: `Kb = (A^b) mod p`
+5. Compare both keys — if equal, the key exchange is successful.
+
+---
